@@ -28,6 +28,8 @@ const flightSchema = new mongoose.Schema = ({
     
 }, {
     timestamps: true
+}, {
+    collection: 'flights'
 })
 
 module.exports = mongoose.model('Flights')
