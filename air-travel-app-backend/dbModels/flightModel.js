@@ -1,27 +1,21 @@
 const mongoose = require('mongoose')
 
-const flightSchema = new mongoose.Schema = ({
+const flightSchema = new mongoose.Schema({
 
     airlineName: {
         type: String,
         required: true,
-        unique: true,
-        trim: true,
         minlength: 5
 
     },
-    flightNumber:{
+    flightNumber:{     
         type: Number,
         required: true,
-        unique: true,
-        trim: true,
         minlength: 1
     },
     IATAcode: {
-        type, Number,
+        type: String,
         required: true,
-        unique: true,
-        trim: true,
         minlength: 2,
         maxlength: 2
     }
@@ -32,4 +26,4 @@ const flightSchema = new mongoose.Schema = ({
     collection: 'flights'
 })
 
-module.exports = mongoose.model('Flights')
+module.exports = mongoose.model('Flights', flightSchema)

@@ -1,21 +1,23 @@
 const router = require('express').Router()
-let Flight = require('../dbModels/flightModels')
+
+const flight = require('../dbModels/flightModel')
 
 router.route('/').get((req, res) => {
-    Flight.find()
-    .then(users => res.json(users))
+    flight.find()
+    .then(flight => res.json(flight))
     .catch(err => res.status(400).json('Error: ' + err))
 })
 
 router.route('/add').post((req, res) => {
-    const flightNumber = Number(req.body.flightNumber)
-    const IATAcode = req.body.IATAcode
+    // const airlineName = String(req.body.airlineName)
+    // const flightNumber = Number(req.body)
+    // const IATAcode = String(req.body.IATAcode)
 
-    const newFlight = new Flight({flightNumber, IATAcode})
+    const newFlight = new flight(req.body)
 
     newFlight.save()
-    .then(() => res.json('Flight added!!'))
-    .catch(err => res.status(400).json('Error:  ' + err))
+    .then(() => {res.json('Flight added!!')})
+    .catch(err => {res.status(400).json('Error flight hasn\'t been added:  ' + err)})
 })
 
 module.exports = router
