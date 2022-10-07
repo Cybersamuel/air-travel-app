@@ -8,7 +8,7 @@ const user = new Schema({
 }, {
     timestamps: true
 }, {
-    collection: 'travellers'
+    collection: 'users'
 })
 
 module.exports = mongoose.model('User', user)
