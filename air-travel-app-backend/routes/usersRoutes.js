@@ -1,11 +1,17 @@
 const router = require('express').Router()
 let User = require('../dbModels/userModels')
-const { route } = require('./flightsRoutes')
+
 
 router.route('/').get((req, res) => {
     User.find()
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err))
+})
+
+router.route('/:id').get((req, res) => {
+    User.findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(err => res.status(400).json('Error '+ err))
 })
 
 router.route('/add').post((req, res) => {
@@ -33,7 +39,7 @@ router.route('/update/:id').post((req, res) => {
         user.password = req.body.password
 
         user.save()
-        .then(() => res.json('User information updated!!'))
+        .then(() => res.status(200).json('User information updated!!'))
         .catch(err => res.status(400).json('Error'+ err))
 
     }).catch(err => res.status(400).json('Error' + err))
@@ -45,5 +51,8 @@ router.route('/:id').delete((req, res) => {
     .then(() => res.json('User has been deleted!!'))
     .catch(err => res.json('Error' + err))
 })
+
+
+
 
 module.exports = router
