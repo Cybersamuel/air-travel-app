@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const {MongoClient} = require('mongodb');
 
 var flightSchema = new mongoose.Schema({
 
@@ -19,11 +20,6 @@ var flightSchema = new mongoose.Schema({
         minlength: 2,
         maxlength: 2
     },
-    // passengers: {
-    //     type: Number,
-    //     required: true
-    // }
-    
 }, {
     timestamps: true
 }, {

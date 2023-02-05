@@ -1,24 +1,24 @@
-const router = require('express').Router()
+const UserRouter = require('express').Router()
 let User = require('../dbModels/userModels')
 
 
-router.route('/').get((req, res) => {
+UserRouter.route('/').get((req, res) => {
     User.find()
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err))
 })
 
-router.route('/:id').get((req, res) => {
+UserRouter.route('/:id').get((req, res) => {
     User.findById(req.params.id)
     .then(user => res.json(user))
     .catch(err => res.status(400).json('Error '+ err))
 })
 
-router.route('/add').post((req, res) => {
+UserRouter.route('/add').post((req, res) => {
 
-    const username = String(req.body.username)
-    const email = String(req.body.email)
-    const password = String(req.body.email)
+    let username = String(req.body.username)
+    let email = String(req.body.email)
+    let password = String(req.body.email)
 
     const newUser = new User({
         username,
@@ -31,7 +31,7 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Error:  ' + err))
 })
 
-router.route('/update/:id').post((req, res) => {
+UserRouter.route('/update/:id').post((req, res) => {
     User.findById(req.params.id)
     .then(user => {
         user.username = req.body.username,
@@ -46,13 +46,10 @@ router.route('/update/:id').post((req, res) => {
 
 })
 
-router.route('/:id').delete((req, res) => {
+UserRouter.route('/:id').delete((req, res) => {
     User.findByIdAndDelete(req.params.id)
     .then(() => res.json('User has been deleted!!'))
     .catch(err => res.json('Error' + err))
 })
 
-
-
-
-module.exports = router
+module.exports = UserRouter;

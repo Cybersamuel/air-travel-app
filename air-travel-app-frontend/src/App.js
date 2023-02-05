@@ -1,26 +1,52 @@
-import React, { createFactory } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css"
+import axios from 'axios';
+import React, {Component} from 'react';
 
-import Navbar from "./components/navbar.component";
-import FlightsList from  "./components/flights-list.components";
-import createFlight from "./components/create-flights.component";
-import CreateUser from "./components/create-user.component";
-import ChangeFlightInfo from "./components/change-flights.component"
+class App extends Component {
+
+  componetDidMount(){
+    axios.get('/flights/')
+    .then(response => {
+      console.log(response.data);
+    });
+  }
+
+    onSumbitFlight() {
+      axios.post('/flights/add', {
+        flightName: 'Caxmerian Airlines',
+        flightNumber: 330,
+        IATAcode: 'CX'
+      })
+      .then(response => {
+        console.log(response);
+      });
+    }
+
+    onSubmitUser() {
+      axios.get('/flights/add', {
+        
+      })
+    }
+  
+
+  
+  render() {
+    return(
+      <div className="App">
+        Hello World
+        <center>
+          <button className="button" onClick={() => this.onSubmitFlight()}>
+            Add a flight to the system
+          </button><br/>
+          <button className="button" on>
+            Add a user to the system.
+          </button>
+        </center>       
+      </div>
+    );
+  }
 
 
-function App() {
-  return (
-    <Router>
-      <Navbar/>
-      <br/>
-      <Route path="/" exact component={FlightsList}/>
-      <Route path="/change/:id" component={ChangeFlightInfo}/>
-      <Route path="/create" component={createFlight}/>
-      <Route path="/user" component={CreateUser}/>
-      <Route path="/user/:id" component={ChangeUserInfo}/>
-    </Router>
-  );
 }
 
 export default App;

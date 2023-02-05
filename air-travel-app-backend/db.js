@@ -1,5 +1,3 @@
 module.exports = {
-    DB: 'mongodb://localhost:27017/air-reservations'
+    db: "mongodb+srv://dbUser:belkaosea@cluster0.ihv5nzk.mongodb.net/test"
 }
-
-

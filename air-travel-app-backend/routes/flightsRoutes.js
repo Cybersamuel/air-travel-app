@@ -1,5 +1,4 @@
 const flightRouter = require('express').Router()
-
 const Flight = require('../dbModels/flightModel')
 
 flightRouter.route('/').get((req, res) => {
@@ -53,4 +52,4 @@ flightRouter.route('/:id').get((req, res) => {
     .catch(err => res.status(400).json('Error ' + err))
 })
 
-module.exports = flightRouter
+module.exports = flightRouter;

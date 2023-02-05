@@ -5,9 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://techcrunch.com/wp-content/uploads/2021/12/FF8DDkpWYAAJc3Y.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.button {
+  border-radius: 34px;
+  padding: 1%;
+  height: 50%;
+  
 }
