@@ -31,6 +31,7 @@ flightRouter.route('/update/:id').post((req, res) => {
         flight.airlineName = req.body.airlineName
         flight.flightNumber = Number(req.body.flightNumber)
         flight.IATAcode = req.body.IATAcode
+        // flight.passengers = req.body.passengers
 
         flight.save()
         .then(() => res.status(200).json('Flight updated!!'))

@@ -12,7 +12,8 @@ var flightSchema = new mongoose.Schema({
     flightNumber:{     
         type: Number,
         required: true,
-        minlength: 1
+        minlength: 1,
+        maxlength: 4
     },
     IATAcode: {
         type: String,
