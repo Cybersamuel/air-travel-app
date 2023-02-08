@@ -1,38 +1,47 @@
 import React from 'react';
+
 import {
-Nav,
-NavLink,
-Bars,
-NavMenu,
-NavBtn,
-NavBtnLink,
-} from './navbarelements';
+	Nav, 
+	NavLink, 
+	Bars, 
+	NavMenu, 
+	NavBtn,
+	NavBtnLink
+} from './NavbarElements'
+
+
 
 const Navbar = () => {
-return (
+  return (
 	<>
-	<Nav>
+	  <Nav>
+		<NavLink to='/'>
+			Redstone		
+		</NavLink>
 		<Bars />
-
 		<NavMenu>
-		<NavLink to='/about' activeStyle>
-			About
-		</NavLink>
-		<NavLink to='/signup' activeStyle>
-			Sign Up
-		</NavLink>
-		{/* Second Nav */}
-		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+			<NavLink to='/about' activeStyle>
+				About
+			</NavLink>
+			<NavLink to='/services' activeStyle>
+				Services
+			</NavLink>
+			<NavLink to='/contact-us' activeStyle>
+				Contact Us 
+			</NavLink>
+			<NavLink to='/signin' activeStyle>
+				Sign Up
+			</NavLink>
+			<NavLink to='/login' activeStyle>
+				Log In		
+			</NavLink>
 		</NavMenu>
 		<NavBtn>
-		<NavBtnLink to='/login'>Log In</NavBtnLink>
+			<NavBtnLink to='/signin'>Sign In</NavBtnLink>
 		</NavBtn>
-		<NavBtn>
-		<NavBtnLink to='/signup'>Sign Up</NavBtnLink>
-		</NavBtn>
-	</Nav>
+	  </Nav>
 	</>
-);
-};
+  )
+}
 
 export default Navbar;

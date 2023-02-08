@@ -1,18 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 const Login = () => {
-return (
-	<div
-	style={{
-		display: 'flex',
-		justifyContent: 'Right',
-		alignItems: 'Right',
-		height: '100vh'
-	}}
-	>
-	<h1>Login</h1>
-	</div>
-);
-};
+  return (
+    <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height:'90vh'
+    }}>Login</div>
+  )
+}
 
-export default Login;
+export default Login

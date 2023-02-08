@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('https://techcrunch.com/wp-content/uploads/2021/12/FF8DDkpWYAAJc3Y.jpeg');
+  background-image: url('../images/airplane.png');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -20,4 +20,9 @@ code {
   padding: 1%;
   height: 50%;
   
+}
+
+h1 {
+  color: lightblue;
+  font-family: 'Courier New', Courier, monospace;
 }

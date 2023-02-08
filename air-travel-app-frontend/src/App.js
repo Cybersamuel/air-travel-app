@@ -1,70 +1,29 @@
-import "bootstrap/dist/css/bootstrap.min.css"
-// import axios from 'axios';
-
 import React from 'react';
 import './App.css';
-import Navbar from './components/navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Home from './components/pages';
-import About from './components/pages/about';
-import SignUp from './components/pages/signup';
-import Login from './components/pages/login';
+import { About } from './components/pages/About';
+import Contact from './components/pages/Contact';
+import Login from './components/pages/Login';
+import SignUp from './components/pages/SignUp';
   
-
+  
+  
 function App() {
-
-  // componetDidMount(){
-  //   axios.get('/flights/')
-  //   .then(response => {
-  //     console.log(response.data);
-  //   });
-  // }
-
-  //   onSumbitFlight() {
-  //     axios.post('/flights/add', {
-  //       flightName: 'Caxmerian Airlines',
-  //       flightNumber: 330,
-  //       IATAcode: 'CX'
-  //     })
-  //     .then(response => {
-  //       console.log(response);
-  //     });
-  //   }
-
-  //   onSubmitUser() {
-  //     axios.post('/users/add', {
-  //       username: 'Steve Efesoa',
-  //       email: 'steveefesoa@gmail.com',
-  //       password: 'thumbuthumbu'
-  //     }).then(response => {
-  //       console.log(response)
-  //     })
-  //   }
+  return (
+    <Router>
+      <Navbar/>
+        <Routes>
+          <Route to='/' exact component={Home}/>
+          <Route to='/about' component={About}/>
+          <Route to='/contact' component={Contact}/>
+          <Route to='/login' component={Login}/>
+          <Route to='/sign-up' component={SignUp}/>
+        </Routes>
+    </Router>
+  );
+}
   
-    return(
-      <div className="App">
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path='/' exact component={Home} />
-            <Route path='/about' component={About} />
-            <Route path='/signup' component={SignUp} />
-            <Route path='/login' component={Login} />
-          </Routes>
-        </Router>
-        {/* <center>
-          <button className="button" onClick={() => this.onSumbitFlight}>
-            Add a flight to the system
-          </button><br/>
-          <button className="button" onClick={() => this.onSubmitUser}>
-            Add a user to the system.
-          </button>
-        </center>        */}
-      </div>
-    );
-  };
-
-
-
-export default App;
-
+  export default App;
+  

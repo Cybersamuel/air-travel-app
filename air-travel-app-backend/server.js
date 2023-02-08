@@ -22,8 +22,6 @@ mongoose.connect(mongoUri.db, {useNewUrlParser: true}).then(
     err => {console.log('Connection failed.')}
 );
 
-
-
 // app routes
 app.use('/users', usersRouter);
 app.use('/flights', flightsRouter);

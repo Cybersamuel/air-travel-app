@@ -1,27 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-const About = () => {
-return (
-	<div
-	style={{
-		display: 'flex',
-		justifyContent: 'Right',
-		alignItems: 'Right',
-		height: '100vh'
-	}}
-	>
-	<h1>
-        Redstone is a leading technology conglomerate in the Forture 500. 
-        It has 3 divisions.
-        <li>
-            Redstone Defense & Security
-            Redstone Technologies
-            Redstone Heavy Industries
-        </li>
-        
-    </h1>
-	</div>
-);
-};
-
-export default About;
+export const About = () => {
+  return (
+    <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height:'90vh'
+    }}>Redstone is a very large company. We have 3 divisions namely:
+        <ol>
+            <li>Redstone Security</li>
+            <li>Redstone Technologies</li>
+            <li>Redstone Corporation</li>
+        </ol>
+    </div>
+  )
+}
