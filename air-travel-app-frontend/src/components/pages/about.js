@@ -1,4 +1,5 @@
 import React from 'react'
+import '../forms/login.css'
 
 export const About = () => {
   return (
@@ -7,12 +8,20 @@ export const About = () => {
         justifyContent: 'center',
         alignItems: 'center',
         height:'90vh'
-    }}>Redstone is a very large company. We have 3 divisions namely:
-        <ol>
-            <li>Redstone Security</li>
-            <li>Redstone Technologies</li>
-            <li>Redstone Corporation</li>
-        </ol>
+    }}>
+      <div className="login-box">
+        <h2>About Redstone</h2>
+        <form>
+          <div className='user-box'>
+            Redstone is a leading conglomerate in this world. It is divided into three companies, namely
+            <ul>
+              <li>Redstone Heavy Industries</li>
+              <li>Redstone Security</li>
+              <li>Redstone Technologies</li>
+            </ul>
+          </div>     
+        </form>
+      </div>
     </div>
   )
 }

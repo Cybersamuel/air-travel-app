@@ -9,27 +9,22 @@ import {
 	NavBtnLink
 } from './NavbarElements'
 
-
-
 const Navbar = () => {
   return (
 	<>
 	  <Nav>
 		<NavLink to='/'>
-			Redstone		
+		<img src={require('../images/redstonelogo.jpg')} height="70px" width="90px" alt="Redstone logo"/>
 		</NavLink>
 		<Bars />
 		<NavMenu>
 			<NavLink to='/about' activeStyle>
 				About
 			</NavLink>
-			<NavLink to='/services' activeStyle>
-				Services
-			</NavLink>
 			<NavLink to='/contact-us' activeStyle>
 				Contact Us 
 			</NavLink>
-			<NavLink to='/signin' activeStyle>
+			<NavLink to='/signup' activeStyle>
 				Sign Up
 			</NavLink>
 			<NavLink to='/login' activeStyle>
@@ -37,7 +32,7 @@ const Navbar = () => {
 			</NavLink>
 		</NavMenu>
 		<NavBtn>
-			<NavBtnLink to='/signin'>Sign In</NavBtnLink>
+			<NavBtnLink to='/signup'>Sign Up</NavBtnLink>
 		</NavBtn>
 	  </Nav>
 	</>
