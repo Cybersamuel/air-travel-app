@@ -12,7 +12,7 @@ const usersRouter = require('./routes/usersRoutes');
 const flightsRouter = require('./routes/flightsRoutes');
 
 // port number
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 
 app.use(express.json());

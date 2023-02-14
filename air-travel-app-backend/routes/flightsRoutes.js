@@ -4,20 +4,20 @@ const Flight = require('../dbModels/flightModel')
 flightRouter.route('/').get((req, res) => {
     Flight.find()
     .then(flight => res.status(200).json(flight))
-    .catch(err => res.status(400).json('Error: ' + err))
+    .catch(err => res.status(400).json('Error: ' + err));
 })
 
 flightRouter.route('/add').post((req, res) => {
     const flightNumber = Number(req.body.flightNumber)
-    const IATAcode = req.body.IATAcode
-    const airlineName = req.body.airlineName
-    //const passengers = Number(req.body.passengers)
+    const IATAcode = String(req.body.IATAcode)
+    const airlineName = String(req.body.airlineName)
+    const destination = String(req.body.desination)
 
     const newFlight = new Flight({
         airlineName,
         flightNumber,
         IATAcode,
-        //passengers
+        destination
     })
 
     newFlight.save()
@@ -31,7 +31,7 @@ flightRouter.route('/update/:id').post((req, res) => {
         flight.airlineName = req.body.airlineName
         flight.flightNumber = Number(req.body.flightNumber)
         flight.IATAcode = req.body.IATAcode
-        // flight.passengers = req.body.passengers
+        flight.destination = req.body.destination
 
         flight.save()
         .then(() => res.status(200).json('Flight updated!!'))
