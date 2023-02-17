@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import '../forms/signup.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 export const SignUp = () => {
 
@@ -14,11 +14,11 @@ export const SignUp = () => {
   const register = async(event) => {
     event.preventDefault();
 
-    if (!username && !email && !password && {/*!confpassword*/}){
+    if (!username || !email || !password){
         window.alert("All blanks have to be filled");
     } else {
         try {
-          var userDetails = {
+          const userDetails = {
             username,
             email,
             password

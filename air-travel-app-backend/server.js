@@ -10,6 +10,7 @@ mongoose.set('strictQuery', false);
 // routers for the app
 const usersRouter = require('./routes/usersRoutes');
 const flightsRouter = require('./routes/flightsRoutes');
+const authRouter = require('./authentication/auth');
 
 // port number
 const port = process.env.PORT || 4000;
@@ -26,7 +27,10 @@ mongoose.connect(mongoUri.db, {useNewUrlParser: true}).then(
 
 // app routes
 app.use('/users', usersRouter);
+
 app.use('/flights', flightsRouter);
+
+app.use('/auth', authRouter);
 
 // app listener
 app.listen(port, () => {

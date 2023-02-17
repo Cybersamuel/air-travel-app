@@ -5,40 +5,20 @@ import axios from 'axios';
 
 export const Login = () => {
 
-  const [username, setEmail] = React.useState("");
+  const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const navigate = useNavigate();
 
   const login = async(event) => {
     event.preventDefault();
 
-    if (!username || !password){
-      window.alert("You have to fill in the blanks!");
-    } else {
-      try {
-        const data = await axios.post('http://localhost:4000/users/login', {
-          username: username,
-          password: password
-        });
-
-        console.log(data);
-        localStorage.clear();
-
-        localStorage.setItem('token', JSON.stringify(data.token));
-
-        navigate("/welcome", {state: {username: data.username}});
-
-        window.alert(`You have logged in ${username}`);
-
-      } catch (error) {
-        console.log(error);
-        alert("Invalid credentials")
-      }
-      
+    const user = {
+      username: username
     }
+
+    axios.post()
   }
 
-  
   return (
     <div style={{
         display: 'flex',
@@ -56,9 +36,9 @@ export const Login = () => {
             value={username} 
             required={true}
             onChange={(e) => {
-              setEmail(e.target.value);
+              setUsername(e.target.value);
             }}/>
-            <label htmlFor='email'>Username</label>
+            <label htmlFor='username'>Username</label>
           </div>
           <div className="user-box">
             <input 
@@ -71,7 +51,7 @@ export const Login = () => {
             }}/>
             <label htmlFor='password'>Password</label>
           </div>
-          <a href="/welcome"  value="login" onClick={login}>
+          <a href="/welcome"  value="login"  onSonClick={login}>
             <span></span>
             <span></span>
             <span></span>
@@ -83,5 +63,5 @@ export const Login = () => {
     </div>
   )
 
-  
+
 }
