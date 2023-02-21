@@ -1,37 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import '../forms/signup.css';
 import { useNavigate } from 'react-router-dom'
 
 export const SignUp = () => {
 
-  const [username, setUsername] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+ 
   const navigate = useNavigate();
-  // const [confpassword, setConfpassword] = React.useState("")
 
   const register = async(event) => {
     event.preventDefault();
 
-    if (!username || !email || !password){
+    if (!(username) || !(email) || !(password)){
         window.alert("All blanks have to be filled");
     } else {
         try {
           const userDetails = {
-            username,
             email,
+            username,
             password
-            //confpassword
           };
-
+          
           const user = await axios.post('http://localhost:4000/users/add', userDetails);
 
           localStorage.setItem('token', JSON.stringify(user.token));
 
-          navigate('/welcome', {state: {username: user.username}})
+          alert("You have registered.")
 
-          window.alert(`${username} you are successfully registered`);
+          navigate('/welcome', {state: {username: user.username}})
           
         } catch(error) {
           console.error(error);
@@ -82,17 +81,17 @@ export const SignUp = () => {
             }}/>
             <label htmlFor='password'>Password</label>
           </div>
-          <div className="user-box">
-            {/* <input 
+          {/* <div className="user-box">
+            <input 
             type="password" 
-            id='confpassword'
-            value={confpassword} 
+            id='password2'
+            value={password2} 
             required="true"
             onChange={(e) => {
-            setConfpassword(e.target.value);
+            setData(e.target.value);
             }}/>
-            <label htmlFor='password'>Confirm Password</label> */}
-          </div>
+            <label htmlFor='password'>Confirm Password</label>
+          </div> */}
           <a href='/welcome' type='submit' onClick={register}>
             <span></span>
             <span></span>

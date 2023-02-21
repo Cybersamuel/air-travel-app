@@ -9,7 +9,7 @@ export const Contact = () => {
         height:'90vh'
     }}>
       <div className="login-box">
-        <h2>This is the contact component</h2>
+        <h2>Contact Info</h2>
         <form>
           <div className="user-box">
             <ul>

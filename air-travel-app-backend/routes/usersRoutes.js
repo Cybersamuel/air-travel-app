@@ -1,9 +1,10 @@
 const UserRouter = require('express').Router();
+
 const {addUser, 
     deleteUser, 
     getUsers, 
     getUserById, 
-    updateUser } = require('../controllers/users')
+    updateUser, authUser } = require('../controllers/users')
 
 UserRouter.get('/', getUsers);
 
@@ -14,5 +15,7 @@ UserRouter.post('/add', addUser);
 UserRouter.post('/update/:id', updateUser);
 
 UserRouter.delete('/:id', deleteUser);
+
+UserRouter.post('/auth', authUser);
 
 module.exports = UserRouter;

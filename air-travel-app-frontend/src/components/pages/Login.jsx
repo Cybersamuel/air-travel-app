@@ -1,22 +1,38 @@
-import React from 'react'
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../forms/login.css';
 import axios from 'axios';
-
 export const Login = () => {
 
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+  //const [data, setData] = useState([])
+
+  // const signIn = useSignIn();
   const navigate = useNavigate();
 
   const login = async(event) => {
     event.preventDefault();
 
-    const user = {
-      username: username
-    }
+    
 
-    axios.post()
+    if(!username || !password){
+      window.alert('Fill in all the blanks')
+    } else {
+      
+      const loginValues = {
+        username: username,
+        password: password
+      }
+
+      const response = await axios.post('http://localhost:4000/users/auth', loginValues);
+      localStorage.setItem('token', JSON.stringify(response.token));
+
+      window.alert('You have logged in')
+      navigate("/welcome", {state: {username: response.username}})
+    }
+    
+
   }
 
   return (
@@ -51,7 +67,7 @@ export const Login = () => {
             }}/>
             <label htmlFor='password'>Password</label>
           </div>
-          <a href="/welcome"  value="login"  onSonClick={login}>
+          <a href="/welcome"  value="login"  onClick={login}>
             <span></span>
             <span></span>
             <span></span>

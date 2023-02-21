@@ -1,5 +1,5 @@
-const flightRouter = require('express').Router();
-const Flight = require('../dbModels/flightModel');
+const flightRouter = require('express').Router()
+
 const {addFlight, 
     getFlights,
      getFlightById,

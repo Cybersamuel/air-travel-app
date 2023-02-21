@@ -10,15 +10,15 @@ export const Home = () => {
       await axios.get('http://localhost:4000/flights')
       .then((data) => {
         console.log(data);
-        setFlights("Passengers for " + data.data[4].airlineName + " Flight " + data.data[4].flightNumber + 
-        " to " + data.data[4].destination + " are kindly requested to go to Gate A1. We are now closing the gate.")
+        setFlights("Passengers for " + data.data[1].airlineName + " Flight " + data.data[1].flightNumber + 
+        " to " + data.data[1].destination + " are kindly requested to go to Gate A1. We are now closing the gate.")
 
       });
   }
 
   useEffect(()=> {
     getFlights();
-  }) 
+  },[]) 
   
 
   return (

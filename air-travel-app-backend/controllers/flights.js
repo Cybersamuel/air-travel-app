@@ -1,4 +1,4 @@
-const Flights = require('../dbModels');
+const Flight = require('../dbModels/flightModel');
 
 const getFlights = (req, res) => {
     Flight.find()
@@ -8,9 +8,7 @@ const getFlights = (req, res) => {
 
 const addFlight = (req, res) => {
     const flightNumber = Number(req.body.flightNumber)
-    const IATAcode = String(req.body.IATAcode)
-    const airlineName = String(req.body.airlineName)
-    const destination = String(req.body.desination)
+    const [IATAcode, airlineName, destination] = String(req.body.IATAcode)
 
     const newFlight = new Flight({
         airlineName,
