@@ -1,8 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose');
-const mongoUri = require('../air-travel-app-backend/db')
+//const mongoUri = require('../air-travel-app-backend/db')
 const cors = require('cors');
 const app = express();
+require('dotenv').config();
 
 
 mongoose.set('strictQuery', false);
@@ -19,7 +20,7 @@ app.use(express.json());
 app.use(cors());
 
 // connection indicator for the database
-mongoose.connect(mongoUri.db, {useNewUrlParser: true}).then(
+mongoose.connect(process.env.MONGODB_CLUSTER, {useNewUrlParser: true}).then(
     () => {console.log('Redstone Global database is connected.')},
     err => {console.log('Connection failed.')}
 );
