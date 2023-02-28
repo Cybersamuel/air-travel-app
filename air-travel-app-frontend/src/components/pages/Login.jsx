@@ -2,13 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../forms/login.css';
 import axios from 'axios';
-export const Login = () => {
 
+export const Login = () => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-  //const [data, setData] = useState([])
 
-  // const signIn = useSignIn();
   const navigate = useNavigate();
 
   const login = async(event) => {
@@ -78,6 +76,5 @@ export const Login = () => {
       </div>
     </div>
   )
-
-
 }
+

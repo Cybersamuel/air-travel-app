@@ -1,8 +1,7 @@
 import React from 'react';
 import '../forms/login.css';
 
-const Welcome = () => {
-
+export const Welcome = () => {
     return (
         <div style={{
             display: 'flex',
@@ -14,13 +13,10 @@ const Welcome = () => {
             <form>
                 <div className='user-box'>
                     <h2>Congratulations! You made it </h2>
-                  
                 </div>
             </form>
             </div>
         </div>
     )
-
 }
 
-export default Welcome;

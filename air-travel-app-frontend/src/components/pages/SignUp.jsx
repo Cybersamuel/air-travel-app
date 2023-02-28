@@ -4,7 +4,6 @@ import '../forms/signup.css';
 import { useNavigate } from 'react-router-dom'
 
 export const SignUp = () => {
-
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,7 +52,7 @@ export const SignUp = () => {
             type="text" 
             id='username' 
             value={username} 
-            required="true"
+            required={true}
             onChange={(e) => {
               setUsername(e.target.value);
             }}/>
@@ -64,7 +63,7 @@ export const SignUp = () => {
             type="email"
             id='email'
             value={email}
-            required="true"
+            required={true}
             onChange={(e) => {
               setEmail(e.target.value);
             }}/>
@@ -75,7 +74,7 @@ export const SignUp = () => {
             type="password" 
             id='password'
             value={password}
-            required='true'
+            required={true}
             onChange={(e) => {
               setPassword(e.target.value);
             }}/>
@@ -104,3 +103,4 @@ export const SignUp = () => {
     </div>
   )
 }
+  

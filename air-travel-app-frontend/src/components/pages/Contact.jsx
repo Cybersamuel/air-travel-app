@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Contact = () => {
+const Contact = () => {
   return (
     <div style={{
         display: 'flex',
@@ -22,5 +22,7 @@ export const Contact = () => {
       </div>
     </div>
   )
-}
+} 
+
+export default Contact;
 

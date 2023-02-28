@@ -1,4 +1,4 @@
-const flightRouter = require('express').Router()
+const FlightRouter = require('express').Router()
 
 const {addFlight, 
     getFlights,
@@ -6,14 +6,14 @@ const {addFlight,
       deleteFlight,
        updateFlight } = require('../controllers/flights');
 
-flightRouter.get('/', getFlights);
+FlightRouter.get('/', getFlights);
 
-flightRouter.post('/add', addFlight);
+FlightRouter.post('/add', addFlight);
 
-flightRouter.get('/update/:id', updateFlight);
+FlightRouter.get('/update/:id', updateFlight);
 
-flightRouter.delete('/:id', deleteFlight);
+FlightRouter.delete('/:id', deleteFlight);
 
-flightRouter.get('/:id', getFlightById);
+FlightRouter.get('/:id', getFlightById);
 
-module.exports = flightRouter;
+module.exports = FlightRouter;

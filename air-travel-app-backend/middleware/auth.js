@@ -3,7 +3,8 @@ const asyncHandler = require('express-async-handler')
 const User = require('../dbModels/userModel');
  
 const protect = asyncHandler(async (req, res, next) => {
-    let token
+    
+    let token = '';
 
     if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
         try {

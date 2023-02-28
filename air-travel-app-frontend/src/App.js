@@ -1,18 +1,17 @@
 import React from 'react';
-
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar'
 import { Home } from './components/pages';
 import { About } from './components/pages/About';
-import { Contact } from './components/pages/Contact';
+import Contact from './components/pages/Contact';
 import { Login } from './components/pages/Login';
 import { SignUp } from './components/pages/SignUp';
-import Welcome from './components/pages/Welcome';
+import { Welcome } from './components/pages/Welcome';
 
 function App() {
   return (
-    
+
     <div>
       <Router>
         <Navbar/>
