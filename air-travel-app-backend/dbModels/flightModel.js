@@ -5,11 +5,11 @@ var flightSchema = new mongoose.Schema({
     airlineName: {
         type: String,
         required: true,
-        minlength: 5
+        minlength: 0
 
     },
     flightNumber:{     
-        type: Number,
+        type: String,
         required: true,
         minlength: 1,
         maxlength: 4
@@ -22,8 +22,7 @@ var flightSchema = new mongoose.Schema({
     },
     destination: {
         type: String,
-        required: true,
-        minlength: 2
+        required: true
     },
 }, {
     timestamps: true

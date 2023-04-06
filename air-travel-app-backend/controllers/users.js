@@ -32,6 +32,7 @@ const addUser = async (req, res) => {
         const emailExists = await User.findOne({email});
 
         if(userExists || emailExists){
+            alert('Username or email already registered');
             res.status(400).json('Username or email is already registered in this company')
         } else {
            // Hash password
@@ -69,8 +70,8 @@ const addUser = async (req, res) => {
             
                     // send mail with defined transport object
                     let info = await transporter.sendMail({
-                        from: '"Redstone Global" <claytoncooper241@gmail.com>', // sender address
-                        to: `${email}`, // list of receivers
+                        from: '"Redstone Global" <claytoncooper241@gmail.com>', 
+                        to: `${email}`, 
                         subject: "Thanks for registering", 
                         text: "Hello world?", 
                         html: `Thanks for registering in our company ${username}. <br/>
@@ -96,19 +97,72 @@ const updateUser = async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt)
-        User.findById(req.params.id)
-        .then(user => {
+
+        const userExists = User.findOne({email});
+
+        if (userExists){
+            User.findById(req.params.id)
+            .then(user => {
             user.username = req.body.username
             user.email = req.body.email
             user.password = req.body.password 
             user.password = hashedPassword
 
             user.save()
-            .then(() => res.status(200).json('User information updated!!'))
-            .catch(err => res.status(400).json('Error '+ err))
+            .then(() => {
+            }).catch(err => res.status(400).json('Error '+ err))
 
         }).catch(err => res.status(400).json('Error' + err))
+        }
+        
     
+}
+
+const forgotPass = async (req, res) => {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt)
+
+    const userExists = User.findOne({email})
+
+    if (userExists){
+        User.findById(req.params.id)
+        .then(user1 => {
+            user1.username = user.username;
+            user1.email = user.email;
+            user1.password = req.body.password;
+            user1.password = hashedPassword
+
+        user1.save()
+        .then(() => {
+            async function main() {
+                let transporter = nodemailer.createTransport({
+                    host: 'smtp.gmail.com',
+                    port: 587,
+                    secure: false,
+                    auth: {
+                        user: user,
+                        pass: pass
+                    },
+                })
+
+                let info = transporter.sendMail({
+                    from: '"Redstone Global" <claytoncooper241@gmail.com>', 
+                    to: `${email}`, 
+                    subject: "Password Reset Request", 
+                    text: "", 
+                    html: `<p> Hello, ${user.username}, for the reset password link, click here: <p><br/>
+                            <a> http://localhost:3000/forgotPassword </a> </p>` 
+
+                })
+
+                console.log('Message sent %s' + (info).messageId)
+            }
+            main().catch(console.error);
+        })
+        .catch(err => res.status(400).json('Error, password updation failed...'))
+        }).catch
+
+    }
 }
 
 const deleteUser = (req, res) => {
@@ -124,7 +178,7 @@ const generateToken = (id) => {
     })
 }
 
-  const authUser = async (req, res) => {
+const authUser = async (req, res) => {
 
     const username = String(req.body.username);
     const password = String(req.body.password);
@@ -144,4 +198,4 @@ const generateToken = (id) => {
 }
 
 
-module.exports = {getUsers, getUserById, addUser, updateUser, deleteUser, authUser }
+module.exports = {getUsers, getUserById, addUser, updateUser, deleteUser, authUser, forgotPass}

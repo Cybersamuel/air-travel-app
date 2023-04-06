@@ -1,0 +1,37 @@
+const Search = ({onSearchChange}) => {
+
+    const [search, setSearch] = useState(null);
+
+    const loadOptions = (inputValue) => {
+
+        const {data} = await axios.get()
+        return fetch(`http://localhost:4000/flights`)
+        .then((response) => response.json())
+        .then((response) => {
+            return {
+                options: response.data.map((flight) => {
+                    return {
+                        value: `${flight.destination}`,
+                        label: `${flight.IATACode} ${flight.flightNumber}`
+                    }
+                })
+            }
+        })
+        .catch(err => console.error(err))
+    }
+  return (
+    
+    <AsyncPaginate
+        placeholder="Search for flights"
+        debounceTimeout={600}
+        value={search}
+        onChange={(searchData) => {
+            setSearch(searchData);
+            onSearchChange(searchData);
+        }}
+        loadOptions={loadOptions}
+    />
+    
+
+  )
+}

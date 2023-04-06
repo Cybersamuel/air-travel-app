@@ -5,8 +5,8 @@ import {
 	NavLink, 
 	Bars, 
 	NavMenu, 
-	NavBtn,
-	NavBtnLink
+	//NavBtn,
+	//NavBtnLink
 } from './NavbarElements'
 
 export default class Navbar extends Component {
@@ -19,22 +19,19 @@ export default class Navbar extends Component {
 				</NavLink>
 				<Bars />
 				<NavMenu>
-					<NavLink to='/about' activestyle="true">
+					<NavLink className='navlink' to='/about' activestyle="true">
 						About
 					</NavLink>
-					<NavLink to='/contact-us' activestyle="true">
+					<NavLink className='navlink' to='/contact-us' activestyle="true">
 						Contact Us 
 					</NavLink>
-					<NavLink to='/signup' activestyle="true">
+					<NavLink className='navlink' to='/signup' activestyle="true">
 						Sign Up
 					</NavLink>
-					<NavLink to='/login' activestyle="true">
+					<NavLink className='navlink' to='/login' activestyle="true">
 						Log In		
 					</NavLink>
 				</NavMenu>
-				<NavBtn>
-					<NavBtnLink to='/signup'>Sign Up</NavBtnLink>
-				</NavBtn>
 			  </Nav>
 			</>
 		  )

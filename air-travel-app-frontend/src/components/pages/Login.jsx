@@ -33,6 +33,11 @@ export const Login = () => {
 
   }
 
+  const forgotPassword = () => {
+    navigate('/forgotpassword');
+  }
+
+
   return (
     <div style={{
         display: 'flex',
@@ -64,12 +69,9 @@ export const Login = () => {
               setPassword(e.target.value);
             }}/>
             <label htmlFor='password'>Password</label>
+            Forgot Your Password? Click <a id='forgot' onClick={forgotPassword}>here</a>
           </div>
-          <a href="/welcome"  value="login"  onClick={login}>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+          <a href="/welcome"  value="login"  id='submit' onClick={login}>
             Submit
           </a>
         </form>

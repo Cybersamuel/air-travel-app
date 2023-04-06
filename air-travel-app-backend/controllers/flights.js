@@ -7,20 +7,25 @@ const getFlights = (req, res) => {
 }
 
 const addFlight = (req, res) => {
-    const flightNumber = Number(req.body.flightNumber)
-    const [IATAcode, airlineName, destination] = String(req.body.IATAcode)
-
+    const airlineName = String(req.body.airlineName);
+    const flightNumber = Number(req.body.flightNumber);
+    const IATAcode = String(req.body.IATAcode);
+    const destination = String(req.body.destination);
+    
     const newFlight = new Flight({
         airlineName,
         flightNumber,
         IATAcode,
         destination
-    })
+    });
 
     newFlight.save()
-    .then(() => res.status(200).json('Flight added!!'))
-    .catch(err => res.status(400).json('Error:  ' + err))
+        .then(() => res.status(200).json('Flight added!!'))
+        .catch(err => res.status(400).json('Error:  ' + err))
 }
+
+
+    
 
 const updateFlight = (req, res) => {
     Flight.findById(req.params.id)
@@ -50,4 +55,18 @@ const getFlightById = (req, res) => {
     .catch(err => res.status(400).json('Error ' + err))
 }
 
-module.exports = {getFlightById, getFlights, updateFlight, deleteFlight, addFlight }
+const getFlightByDestination = (req, res) => {
+    const destination = req.body.destination;
+
+    Flight.find({'destination': destination}, (err, found) => {
+        if(!err){
+            res.send(found);
+        } else {
+            res.send(err);
+        }
+    })
+    // .then(flight => res.json(flight))
+    // .catch(err => res.status(400).json('Error' + err))
+}
+
+module.exports = {getFlightById, getFlights, updateFlight, deleteFlight, addFlight, getFlightByDestination }
